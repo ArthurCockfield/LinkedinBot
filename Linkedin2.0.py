@@ -186,11 +186,7 @@ def WebHANDLER(Counter=0, Current_URL = Current_URL, Job_Index = 0) :
             print("Error with scrolling or with clicking: ",e)
             browser.get(Current_URL)
             time.sleep(30)
-# Will need to add the ability to go back to the original page 		   
-#Add Counter to Webpage
-     
-#ElementClickInterceptedException: Element <div class="truncate-multiline--truncation-target"> is not clickable at point (486.5,3.5) because another element <div class="nav-main__content full-height display-flex align-items-center"> obscures it
-     
+
 def main(main_counter=0,Main_Job_Index=0) :
    """ 
    Arguments = None
@@ -207,7 +203,4 @@ def main(main_counter=0,Main_Job_Index=0) :
 
        
 main(main_counter=0,Main_Job_Index=0)
-# Note, started data analyst thing on second page 7th job
-#SKipped 3rd page because of Newcomp influence
-# On 4th page, applied for 12 jobs
-# With product I got to 475
+
