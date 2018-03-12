@@ -18,10 +18,10 @@ Function = "Data"
 Location = "Toronto"
 # log in to account
 emailElem = browser.find_element_by_id('login-email')
-emailElem.send_keys('your_email')
+emailElem.send_keys('my-email')
 
 passwordElem = browser.find_element_by_id('login-password')
-passwordElem.send_keys('your_password')
+passwordElem.send_keys('my-password')
 passwordElem.submit()
 time.sleep(30)
 
@@ -43,7 +43,7 @@ time.sleep(30)
 
 
 # Select URL you want to navigate to
-browser.get('https://www.linkedin.com/jobs/search/?f_E=3%2C2&f_LF=f_AL&keywords=product&location=Toronto%2C%20Canada%20Area&locationId=ca%3A4876')
+browser.get('https://www.linkedin.com/jobs/search/?f_E=2%2C3&f_LF=f_AL&keywords=it&location=Toronto%2C%20Canada%20Area&locationId=ca%3A4876')
 #Allow for selection of EZApply and desired credentials
 time.sleep(30)
 # Pull currentURL
@@ -124,14 +124,21 @@ def WebScraper() :
     return elems
 
 def badRole(elems) :
+    print(elems)
     elems = elems.lower()
-    badroles = 'sales sale account accounting bilingual mortgage \
-            receptionist underwriter customer servicelawyer'
-
-    if elems in badroles :
+# Check for special roles I don't want
+    if elems == "analytics consultant (entry level)" :
         return 0
-    else : 
-        return 1
+    elems = elems.replace("/","").split(" ")
+    print(elems)
+    badroles = 'sales sale account accounting bilingual mortgage \
+            receptionist underwriter customer service lawyer '
+    for i in elems :
+        if i in badroles :
+            return 0
+        else : 
+            return 1
+    
         
 # Iterate through each webpage, calling scroller and EZapply to
 def WebHANDLER(Counter=0, Current_URL = Current_URL, Job_Index = 0) :
